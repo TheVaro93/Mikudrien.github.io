@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "TU_API_KEY",
+    authDomain: "ton-projet.firebaseapp.com",
+    projectId: "ton-projet",
+    storageBucket: "ton-projet.appspot.com",
+    messagingSenderId: "TU_SENDER_ID",
+    appId: "TU_APP_ID"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+</script>
+    
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Si tu vois ça, ça marche</title>
+    <script>
+  db.collection("users").get().then((querySnapshot) => {
+    console.log("Documents dans 'users':", querySnapshot.docs.map(doc => doc.data()));
+  }).catch((error) => {
+    console.error("Erreur Firestore :", error);
+  });
+</script>
+
 </head>
 <body>
     <center><h1>Si tu vois ça, ça marche.</h1></center>
